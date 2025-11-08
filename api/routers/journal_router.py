@@ -98,6 +98,7 @@ async def delete_entry(entry_id: str, entry_service: EntryService = Depends(get_
     if not result:
         raise HTTPException(status_code=404, detail="Entry not found")
 
+    await entry_service.delete_entry(entry_id)
     return {"detail" : "Entry Deleted"}
 
 @router.delete("/entries")
